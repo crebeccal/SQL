@@ -1,0 +1,45 @@
+CREATE TABLE characters (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);
+INSERT INTO characters (name, age) VALUES ("Scarlett", "18");
+INSERT INTO characters (name, age) VALUES ("Julian", "19");
+INSERT INTO characters (name, age) VALUES ("Donatella", "17");
+INSERT INTO characters (name, age) VALUES ("Legend", "1000");
+INSERT INTO characters (name, age) VALUES ("Jacks", "1000");
+INSERT INTO characters (name, age) VALUES ("Evangeline", "17");
+INSERT INTO characters (name, age) VALUES ("Apollo", "21");
+
+
+CREATE TABLE books (id INTEGER PRIMARY KEY, name TEXT, author TEXT, book TEXT);
+INSERT INTO books (name, author, book) VALUES ("Scarlett", "Stephanie Garber", "Caraval, Legendary, Finale, Once Upon a Broken Heart");
+INSERT INTO books (name, author, book) VALUES ("Julian", "Stephanie Garber", "Caraval, Legendary, Finale");
+INSERT INTO books (name, author, book) VALUES ("Donatella", "Stephanie Garber", "Caraval, Legendary, Finale, Once Upon a Broken Heart");
+INSERT INTO books (name, author, book) VALUES ("Legend", "Stephanie Garber", "Legendary, Finale");
+INSERT INTO books (name, author, book) VALUES ("Jacks", "Stephanie Garber", "Legendary, Finale, Once Upon a Broken Heart, The Ballad of Never After, A Curse for True Love");
+INSERT INTO books (name, author, book) VALUES ("Evangeline", "Stephanie Garber", "Once Upon a Broken Heart, The Ballad of Never After, A Curse for True Love");
+INSERT INTO books (name, author, book) VALUES ("Apollo", "Stephanie Garber", "Once Upon a Broken Heart, The Ballad of Never After, A Curse for True Love");
+
+
+CREATE TABLE relationship (id INTEGER PRIMARY KEY, name TEXT, romantic TEXT, familial TEXT, ship TEXT);
+INSERT INTO relationship (name, romantic, familial, ship) VALUES ("Scarlett", "Julian/Scarlett", "Donatella", "Julian/Scarlett");
+INSERT INTO relationship (name, romantic, familial, ship) VALUES ("Julian", "Julian/Scarlett", "Legend", "Julian/Scarlett");
+INSERT INTO relationship (name, romantic, familial, ship) VALUES ("Donatella", "Legend/Donatella/Jacks", "Scarlett", "Legend/Donatella");
+INSERT INTO relationship (name, romantic, familial, ship) VALUES ("Legend", "Legend/Donatella/Jacks", "Julian", "Legend/Donatella");
+INSERT INTO relationship (name, romantic, familial, ship) VALUES ("Jacks", "Legend/Donatella/Jacks, Jacks/Evangeline/Apollo", "none", "Jacks/Evangeline");
+INSERT INTO relationship (name, romantic, familial, ship) VALUES ("Evangeline", "Jacks/Evangeline/Apollo", "none", "Jacks/Evangeline");
+INSERT INTO relationship (name, romantic, familial, ship) VALUES ("Apollo", "Jacks/Evangeline/Apollo", "none", "none");
+
+SELECT * 
+FROM characters;
+SELECT * 
+FROM books;
+SELECT * 
+FROM relationship;
+
+SELECT characters.name, books.book
+FROM characters
+JOIN books
+ON characters.name = books.name;
+
+SELECT characters.name, relationship.ship
+FROM characters
+JOIN relationship
+ON characters.name = relationship.name
